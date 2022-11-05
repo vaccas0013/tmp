@@ -1,0 +1,5 @@
+functions-framework==3.*
+gspread
+oauth2client
+gspread_dataframe
+pandas

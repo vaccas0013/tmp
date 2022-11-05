@@ -1,12 +1,13 @@
-import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from gspread_dataframe import set_with_dataframe
 import pandas as pd
+import functions_framework
 
-
-def hello_world(request):
-    SP_CREDENTIAL_FILE = os.environ['API_KEY']
+# Triggered from a message on a Cloud Pub/Sub topic.
+@functions_framework.cloud_event
+def gdrive_gspread_auto(cloud_event):
+    SP_CREDENTIAL_FILE = './google_sheets_api_test.json'
     SP_CORP = ['https://www.googleapis.com/auth/drive',
             'https://spreadsheets.google.com/feeds']
     SP_SHEET_KEY = '1trxHvwKXZs6AAMvUVUfqEVDqS-ycf-w7odf1B-S9KME'
@@ -36,5 +37,3 @@ def hello_world(request):
 
     workbook.add_worksheet(title=sheet_name, rows=1000, cols=26)
     set_with_dataframe(workbook.worksheet(sheet_name), df, include_index=False)
-    
-    return sheet_name
