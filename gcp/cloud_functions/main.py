@@ -9,7 +9,7 @@ import functions_framework
 def gdrive_gspread_auto(cloud_event):
     SP_CREDENTIAL_FILE = './google_sheets_api_test.json'
     SP_CORP = ['https://www.googleapis.com/auth/drive',
-            'https://spreadsheets.google.com/feeds']
+               'https://spreadsheets.google.com/feeds']
     SP_SHEET_KEY = '1trxHvwKXZs6AAMvUVUfqEVDqS-ycf-w7odf1B-S9KME'
     SP_SHEET = 'test'
     credentials = ServiceAccountCredentials.from_json_keyfile_name(SP_CREDENTIAL_FILE, SP_CORP)
